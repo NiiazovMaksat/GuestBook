@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block body %}
 {% for book in book %}
-    <h3>{{ book.name }} ({{ book.email }})</h3>
+    <div class="card">
+    <h4>{{ book.name }} ({{ book.email }})    <i class="far fa-plus-square"></i>    <i class="far fa-minus-square"></i></h4>
     <p>{{ book.text }}</p>
-
+    </div>
 {% endfor %}
 
 {% endblock %}
