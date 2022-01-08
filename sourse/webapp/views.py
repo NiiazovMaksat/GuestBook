@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from webapp.forms import BookForm
@@ -22,3 +22,14 @@ def create(request):
             return redirect("main")
 
         return render(request, 'create.html', {'form': form})
+
+def edit(request):
+    pass
+
+def delete(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    if request.method == 'GET':
+        return render(request, 'delete.html', {'book': book})
+    else:
+        book.delete()
+        return redirect("main")

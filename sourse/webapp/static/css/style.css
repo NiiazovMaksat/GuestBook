@@ -16,3 +16,7 @@ p{
 .inline-div{
     display: inline-block;
 }
+.delete_button{
+    width: 100px;
+    border: black 1px solid;
+}
