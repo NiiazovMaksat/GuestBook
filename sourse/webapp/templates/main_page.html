@@ -10,7 +10,7 @@
     <H2>Гостевая книга</H2>
 {% for book in book %}
     <div class="card">
-    <h5 class="flex">{{ book.name }} ({{ book.email }})<div class="inline-div"> <a href="#"><i class="far fa-edit"></i></a> <a href="{% url 'delete' book.pk %}"><i class="far fa-trash-alt"></i></a></div></h5>
+    <h5 class="flex">{{ book.name }} ({{ book.email }})<div class="inline-div"> <a href="{% url 'edit' book.pk %}"><i class="far fa-edit"></i></a> <a href="{% url 'delete' book.pk %}"><i class="far fa-trash-alt"></i></a></div></h5>
     <p>{{ book.text }}</p>
     </div>
 {% endfor %}

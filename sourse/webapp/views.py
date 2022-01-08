@@ -23,8 +23,25 @@ def create(request):
 
         return render(request, 'create.html', {'form': form})
 
-def edit(request):
-    pass
+def edit(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+
+    if request.method == 'GET':
+        form = BookForm(initial={
+            'name': book.name,
+            'email': book.email,
+            'text': book.text,})
+
+        return render(request, 'edit.html', {'book': book, 'form': form})
+    else:
+        form = BookForm(data=request.POST)
+        if form.is_valid():
+            book.name = form.cleaned_data.get('name')
+            book.email = form.cleaned_data.get('email')
+            book.text = form.cleaned_data.get('text')
+            book.save()
+            return redirect("main")
+        return render(request, 'edit.html', {'book': book, 'form': form})
 
 def delete(request, pk):
     book = get_object_or_404(Book, pk=pk)
