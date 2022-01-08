@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
+
+{% block nav %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'create' %}">Create</a>
+      </li>
+{% endblock %}
 {% block body %}
+
+    <H2>Гостевая книга</H2>
 {% for book in book %}
     <div class="card">
-    <h4>{{ book.name }} ({{ book.email }})    <i class="far fa-plus-square"></i>    <i class="far fa-minus-square"></i></h4>
+    <h5 class="flex">{{ book.name }} ({{ book.email }})<div class="inline-div"> <a href="#"><i class="far fa-edit"></i></a> <a href="#"><i class="far fa-trash-alt"></i></a></div></h5>
     <p>{{ book.text }}</p>
     </div>
 {% endfor %}
